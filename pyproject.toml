@@ -1,0 +1,72 @@
+[tool.poetry]
+name = "vqgan-clip"
+version = "0.1.0"
+description = "Text-to-image synthesis."
+authors = ["Charlton Lim <cadmusthefounder@gmail.com>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "~3.8.10"
+
+[tool.poetry.dev-dependencies]
+bump2version = "^1.0.1"
+commitizen = "^2.20.3"
+pre-commit = "^2.16.0"
+pylint = "^2.12.2"
+pytest = "^6.2.5"
+pytest-asyncio = "^0.16.0"
+pytest-mock = "^3.6.1"
+rope = "^0.22.0"
+watchdog = "^2.1.6"
+
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+
+[tool.black]
+line-length = 88
+target-version = ["py38"]
+
+[tool.mypy]
+allow_redefinition = true
+check_untyped_defs = true
+ignore_errors = false
+ignore_missing_imports = true
+strict_optional = true
+warn_unused_ignores = false
+warn_redundant_casts = true
+warn_unused_configs = true
+
+[tool.pylint.master]
+ignore = "tests"
+extension-pkg-whitelist = "pydantic"
+
+[tool.pylint.messages_control]
+disable = "C0103, C0330, C0326, W0102"
+
+[tool.pylint.format]
+max-line-length = "88"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+version_files = [
+    "vqgan-clip/__version__.py",
+    "pyproject.toml:version"
+]
+style = [
+    ["qmark", "fg:#ff9d00 bold"],
+    ["question", "bold"],
+    ["answer", "fg:#ff9d00 bold"],
+    ["pointer", "fg:#ff9d00 bold"],
+    ["highlighted", "fg:#ff9d00 bold"],
+    ["selected", "fg:#cc5454"],
+    ["separator", "fg:#cc5454"],
+    ["instruction", ""],
+    ["text", ""],
+    ["disabled", "fg:#858585 italic"]
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
